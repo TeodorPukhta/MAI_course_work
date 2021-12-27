@@ -4,6 +4,7 @@ import com.course_work.util.AdditionalFunctions;
 import com.course_work.util.Parser;
 import com.course_work.model.*;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -51,10 +52,24 @@ public class ResultController {
         for (int i = 0; i < alternativeList.getAlternativeList().size(); i++) {
             columns.add(new TableColumn<>(alternativeList.getAlternativeList().get(i).getName()));
             columns.get(i + 2).setCellValueFactory(new MapValueFactory(alternativeList.getAlternativeList().get(i).getName()));
+            columns.get(i).setSortable(false);
         }
 
         infoTable.getItems().addAll(generateDataInMap());
         infoTable.getColumns().setAll(columns);
+        infoTable.getColumns().addListener(new ListChangeListener() {
+            public boolean suspended;
+
+            @Override
+            public void onChanged(Change change) {
+                change.next();
+                if (change.wasReplaced() && !suspended) {
+                    this.suspended = true;
+                    infoTable.getColumns().setAll(columns);
+                    this.suspended = false;
+                }
+            }
+        });
     }
 
     private void calculateResult() {

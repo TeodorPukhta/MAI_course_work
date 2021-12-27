@@ -43,6 +43,7 @@ public class CriteriaInputController {
         criteriaList = new CriteriaList(Integer.parseInt(s));
         criteriaTable.setItems(criteriaList.getObservableList());
         criteriaNameColumn.setCellValueFactory(new PropertyValueFactory<Criteria,String>("name"));
+        criteriaNameColumn.setSortable(false);
         criteriaTable.getColumns().clear();
         criteriaTable.getColumns().add(criteriaNameColumn);
         criteriaTable.setEditable(true);

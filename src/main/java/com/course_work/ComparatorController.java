@@ -3,6 +3,7 @@ package com.course_work;
 import com.course_work.util.Parser;
 import com.course_work.model.*;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,6 +57,7 @@ public class ComparatorController {
             for (int i = 0; i < criteriaList.getCriteriaList().size(); i++) {
                 columns.add(new TableColumn<>(criteriaList.getCriteriaList().get(i).getName()));
                 columns.get(i).setCellValueFactory(new MapValueFactory(criteriaList.getCriteriaList().get(i).getName()));
+                columns.get(i).setSortable(false);
             }
             comparatorTable.getItems().addAll(generateDataInMap("criteria"));
         }
@@ -63,12 +65,26 @@ public class ComparatorController {
             for (int i = 0; i < alternativeList.getAlternativeList().size(); i++) {
                 columns.add(new TableColumn<>(alternativeList.getAlternativeList().get(i).getName()));
                 columns.get(i).setCellValueFactory(new MapValueFactory(alternativeList.getAlternativeList().get(i).getName()));
+                columns.get(i).setSortable(false);
             }
             comparatorTable.getItems().addAll(generateDataInMap("alternative"));
         }
         comparatorTable.setEditable(true);
         comparatorTable.getSelectionModel().setCellSelectionEnabled(true);
         comparatorTable.getColumns().setAll(columns);
+        comparatorTable.getColumns().addListener(new ListChangeListener() {
+            public boolean suspended;
+
+            @Override
+            public void onChanged(Change change) {
+                change.next();
+                if (change.wasReplaced() && !suspended) {
+                    this.suspended = true;
+                    comparatorTable.getColumns().setAll(columns);
+                    this.suspended = false;
+                }
+            }
+        });
 
         Callback<TableColumn<Map, String>, TableCell<Map, String>>
                 cellFactoryForMap = new Callback<TableColumn<Map, String>,
@@ -146,26 +162,21 @@ public class ComparatorController {
                     rows.get(i).getVectorList().get(j).setValue(hashMap.get(alternativeList.getAlternativeList().get(j).getName()).toString());
                 }
             }
-            System.out.printf("%.2f \n", rows.get(i).calculateOwnVector());
 
         }
         for (Row r:
              rows) {
             r.setOwnVectorSum();
         }
-        System.out.println(rows.get(0).getOwnVectorSum());
 
         weightList.add(new VectorWeightList(rows.size()));
         for (int i = 0; i < rows.size(); i++) {
 
             weightList.get(weightList.size()-1).getWeights().add(rows.get(i).calculateVectorWeight());
         }
-        System.out.println("--------------");
         weightList.get(weightList.size()-1).setWeightSum();
-        System.out.println(weightList.toString() +" Сума: " + weightList.get(weightList.size()-1).getWeightSum());
         rowWeightLabel.setText(weightList.get(weightList.size()-1).toString());
         weightSumLabel.setText("Сума: "+weightList.get(weightList.size()-1).getWeightSum());
-        System.out.println("--------------");
         Row.refreshOwnVectorSum();
     }
     @FXML
@@ -193,7 +204,6 @@ public class ComparatorController {
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(comparatorScene);
             window.show();
-        //    System.out.println(weightList.toString());
         }
         else {
             loader.setLocation(getClass().getResource("comparator-scene.fxml"));

@@ -53,6 +53,7 @@ public class AlternativeInputController {
         alternativeList = new AlternativeList(Integer.parseInt(s));
         alternativeTable.setItems(alternativeList.getObservableList());
         alternativeNameColumn.setCellValueFactory(new PropertyValueFactory<Alternative, String>("name"));
+        alternativeNameColumn.setSortable(false);
         alternativeTable.getColumns().clear();
         alternativeTable.getColumns().add(alternativeNameColumn);
         alternativeTable.setEditable(true);
