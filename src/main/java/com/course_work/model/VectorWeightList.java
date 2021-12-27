@@ -6,6 +6,7 @@ import java.util.List;
 public class VectorWeightList {
     private List<VectorWeight> weights;
     private double weightSum;
+
     public VectorWeightList(int amount) {
         weights = new ArrayList<>();
         weightSum=0;

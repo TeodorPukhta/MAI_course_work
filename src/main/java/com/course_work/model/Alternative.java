@@ -14,9 +14,8 @@ public class Alternative {
         nameProperty().set(value);
     }
 
-
     public StringProperty nameProperty() {
-        if (name == null) name = new SimpleStringProperty(this, "name");
+        if (name == null) name = new SimpleStringProperty(this, " ");
         return name;
     }
 

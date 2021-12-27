@@ -10,14 +10,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.course_work.CriteriaInputController">
    <children>
-      <Button fx:id="submitCriteriaButton" layoutX="185.0" layoutY="37.0" mnemonicParsing="false" onAction="#clickSubmitCriteriaAmountButton" onInputMethodTextChanged="#checkInputField" text="Підтвердити" />
-      <Label fx:id="criteriaInfoLabel" layoutX="24.0" layoutY="15.0" text="Введіть кількість критеріїв">
+      <Button fx:id="submitCriteriaButton" layoutX="195.0" layoutY="47.0" mnemonicParsing="false" onAction="#clickSubmitCriteriaAmountButton" onInputMethodTextChanged="#checkInputField" text="Підтвердити" />
+      <Label fx:id="criteriaInfoLabel" layoutX="34.0" layoutY="25.0" text="Введіть кількість критеріїв">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="criteriaAmountInput" layoutX="24.0" layoutY="37.0" />
-      <TableView fx:id="criteriaTable" editable="true" layoutX="24.0" layoutY="79.0" prefHeight="200.0" prefWidth="200.0">
+      <TextField fx:id="criteriaAmountInput" layoutX="34.0" layoutY="47.0" />
+      <TableView fx:id="criteriaTable" editable="true" layoutX="34.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0">
         <columns>
           <TableColumn fx:id="criteriaNameColumn" onEditCommit="#updateDataInColumn" prefWidth="75.0" sortable="false" text="Назва" />
         </columns>
@@ -25,6 +25,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="nextStepButton" layoutX="280.0" layoutY="37.0" mnemonicParsing="false" onAction="#goToNextScene" text="Далі" />
+      <Button fx:id="nextStepButton" layoutX="290.0" layoutY="47.0" mnemonicParsing="false" onAction="#goToNextScene" text="Далі" />
    </children>
 </AnchorPane>

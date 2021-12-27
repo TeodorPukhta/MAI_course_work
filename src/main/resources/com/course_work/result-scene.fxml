@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.course_work.ResultController">
+   <children>
+      <TableView fx:id="infoTable" layoutX="141.0" layoutY="61.0" prefHeight="200.0" prefWidth="317.0" />
+      <Label fx:id="tableNameLabel" alignment="TOP_CENTER" layoutX="120.0" layoutY="14.0" prefHeight="38.0" prefWidth="359.0" text="Результати роз'язання задачі" textAlignment="CENTER">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Button fx:id="exitButton" layoutX="534.0" layoutY="361.0" mnemonicParsing="false" onAction="#clickToCloseProgram" text="Вихід" />
+      <Label fx:id="resultLabel" layoutX="10.0" layoutY="273.0" prefHeight="34.0" prefWidth="579.0" text="Зважене середнє: ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="bestChoiceLabel" layoutX="10.0" layoutY="309.0" prefHeight="34.0" prefWidth="579.0" text="Найкращий варіант: ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -32,9 +32,6 @@ public class Row {
         this.row = row;
     }
 
-//    public void calculateOwnVector() {
-//
-//    }
         public double calculateOwnVector(){
         row.forEach(tableField -> ownVector = ownVector * Double.parseDouble(tableField.getValue()));
         ownVector = Math.pow(ownVector,1.0/ row.size());
@@ -61,6 +58,9 @@ public class Row {
      //   row.forEach(tableField -> ownVectorSum+= tableField.getDoubleValue());
         ownVectorSum+=ownVector;
       //  ownVectorSum+= ownVectorSum;
+    }
+    public static void refreshOwnVectorSum(){
+        ownVectorSum=0;
     }
     public void printOwnVector(){
         System.out.printf("Own vector: %.2f \n",ownVector);

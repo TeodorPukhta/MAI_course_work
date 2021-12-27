@@ -5,7 +5,6 @@ import javafx.beans.property.StringProperty;
 
 public class Criteria {
     private StringProperty name;
-    private double value;
 
     public String getName() {
         return nameProperty().get();
@@ -13,14 +12,6 @@ public class Criteria {
 
     public void setName(String value) {
         nameProperty().set(value);
-    }
-
-    public double getValue() {
-        return value;
-    }
-
-    public void setValue(double value) {
-        this.value = value;
     }
 
     public StringProperty nameProperty() {

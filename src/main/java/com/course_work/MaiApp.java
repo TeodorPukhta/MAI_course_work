@@ -11,9 +11,10 @@ public class MaiApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MaiApp.class.getResource("criteria-scene.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 500);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("MAI Program");
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 

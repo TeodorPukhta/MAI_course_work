@@ -1,6 +1,6 @@
 package com.course_work;
 
-import com.course_work.Util.Parser;
+import com.course_work.util.Parser;
 import com.course_work.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,12 +49,9 @@ public class AlternativeInputController {
     }
     @FXML
     void clickSubmitAlternativeAmountButton(ActionEvent event) {
-//     criteriaNameColumn.editableProperty().set(true);
         String s = String.valueOf(alternativeAmountInput.getCharacters());
         alternativeList = new AlternativeList(Integer.parseInt(s));
-        //    criteriaTable = new TableView<Criteria>(criteriaList.getObservableList());
         alternativeTable.setItems(alternativeList.getObservableList());
-        //   criteriaNameColumn = new TableColumn<Criteria, String>("Назва");
         alternativeNameColumn.setCellValueFactory(new PropertyValueFactory<Alternative, String>("name"));
         alternativeTable.getColumns().clear();
         alternativeTable.getColumns().add(alternativeNameColumn);

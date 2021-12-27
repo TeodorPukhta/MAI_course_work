@@ -1,4 +1,4 @@
-package com.course_work.Util;
+package com.course_work.util;
 
 import com.course_work.model.AlternativeList;
 import com.course_work.model.CriteriaList;
